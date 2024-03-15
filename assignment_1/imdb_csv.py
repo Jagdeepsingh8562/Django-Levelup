@@ -54,7 +54,6 @@ with open('assignment_1/movies_initial.csv', 'r') as file:
     
     # get_movies_by_language(rows, 'Hindi')
 
-# Movies having IMDB rating more greater than 7 and having ratings greater than 1000
     
     def get_movies_by_imdb_rating(data):
         movies = []
