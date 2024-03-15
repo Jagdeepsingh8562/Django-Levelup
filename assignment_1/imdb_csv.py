@@ -1,6 +1,7 @@
 import csv
+from fpdf import FPDF
 
-with open('movies_initial.csv', 'r') as file:
+with open('assignment_1/movies_initial.csv', 'r') as file:
     reader = csv.reader(file)
     header = next(reader)
     rows = []
@@ -8,14 +9,20 @@ with open('movies_initial.csv', 'r') as file:
         rows.append(row)
 
     def get_movies_by_director(data, director):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size=6)
         movies = []
+        pdf.cell(200, 10, txt=", ".join(header).encode('utf-8').decode('latin-1'), ln=True,)
         for row in data:
             if director in row[7]:
                 movies.append(row)
+                pdf.cell(200, 10, txt=", ".join(row).encode('utf-8').decode('latin-1'), ln=True,)
         print(movies)
+        pdf.output("assignment_1/output_pdf/movies_by_director.pdf")
         return movies
     
-    # get_movies_by_director(rows, 'Nolan')
+    get_movies_by_director(rows, 'Nolan')
 
     def get_movies_filtered_by_country(data, country):
         # country is 18 column
@@ -49,4 +56,4 @@ with open('movies_initial.csv', 'r') as file:
         print(movies)
         return movies
     
-    get_movies_by_imdb_rating(rows)
+    # get_movies_by_imdb_rating(rows)
