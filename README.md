@@ -23,6 +23,6 @@ pip install -r requirements.txt
 ```bash
 python imdb_csv.py
 ```
-4. Check the pdf files in the directory
+4. Check the pdf files in the `output_pdf` directory
 
 
